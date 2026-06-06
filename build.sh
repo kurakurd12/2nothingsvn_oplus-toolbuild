@@ -3,6 +3,10 @@
 
 baserom="$1"
 localbuild="$2"
+repo_name="$3"
+prefix_id="$4"
+builder_name="$5"
+builder_id="$6"
 work_dir=$(pwd)
 tools_dir=${work_dir}/bin/$(uname)/$(uname -m)export PATH=$(pwd)/bin/$(uname)/$(uname -m)/:$PATH
 chmod 777 ${work_dir}/bin/*
@@ -46,6 +50,9 @@ echo "[INFO] - Gathering Devices Infomations"
 source $work_dir/bin/ddevice/fetchINFO.sh
 bash $work_dir/bin/ddevice/modifyINFO.sh
 main
+
+# Gửi thông báo đang Build với đầy đủ Codename và Version
+python3 $work_dir/notify.py build "$repo_name" "$baserom" "$prefix_id" "$builder_name" "$builder_id"
 
 rm -rf config
 if [ -f $work_dir/${baserom}.zip ]; then
