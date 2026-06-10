@@ -70,7 +70,7 @@ jobs:
         env:
           INPUT_URL: ${{ inputs.input_url }}
         run: |
-          sudo bash build.sh "$INPUT_URL" "n" "${{ github.repository }}" "oplus" "${{ inputs.builder_name }}" "${{ inputs.builder_id }}"
+          sudo -E bash build.sh "$INPUT_URL" "n" "${{ github.repository }}" "oplus" "${{ inputs.builder_name }}" "${{ inputs.builder_id }}"
 
       - name: Pack ROM...
         run: |

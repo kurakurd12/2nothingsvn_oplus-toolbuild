@@ -40,7 +40,7 @@ echo "[UNPACK] - Extracting files from BASEROM [payload.bin]"
 unzip ${baserom} payload.bin -d build/baserom >/dev/null 2>&1 || error "Extracting [payload.bin] error"
 echo "[UNPACK] - [payload.bin] extracted."
 echo "[UNPACK] - Unpacking BASEROM [payload.bin]"
-payload-dumper-go -o build/baserom/images/ build/baserom/payload.bin >/dev/null 2>&1 || error "Unpacking [payload.bin] failed"        
+payload-extract extract -o build/baserom/images/ build/baserom/payload.bin >/dev/null 2>&1 || error "Unpacking [payload.bin] failed"        
 for part in system system_ext product vendor odm my_product my_engineering my_stock my_carrier my_region my_bigball my_heytap my_manifest ;do
     extract_partition $work_dir/build/baserom/images/${part}.img $work_dir/build/baserom/images
     PACK_TYPE=$(cat $work_dir/bin/ddevice/fstype.txt)
