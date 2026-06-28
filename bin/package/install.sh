@@ -7,7 +7,9 @@ BASE_REGION=$(cat $work_dir/bin/ddevice/rom_region.txt)
 insmod=$(grep "install_mods" $work_dir/config.env | cut -d '=' -f 2)
 
 if [[ $insmod == "true" ]]; then
-if [[ $ROMVERSION == "16.0.7" && $ANDROID_VER == "16" ]]; then
+if [[ $ROMVERSION == "16.0.8" && $ANDROID_VER == "16" ]]; then
+    bash $work_dir/bin/package/OS168/insmod.sh
+elif [[ $ROMVERSION == "16.0.7" && $ANDROID_VER == "16" ]]; then
     bash $work_dir/bin/package/OS167/insmod.sh
 elif [[ $ROMVERSION == "16.0.5" && $ANDROID_VER == "16" ]]; then
     bash $work_dir/bin/package/OS165/insmod.sh
